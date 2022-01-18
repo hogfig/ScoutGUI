@@ -27,7 +27,7 @@ var ros = new ROSLIB.Ros({
   });
 
   Scout_status.subscribe(function(message) {
-    document.getElementById("linear_v").innerHTML(message.linear_velocity);
-    document.getElementById("angular_v").innerHTML(message.angular_velocity);
-    Scout_status.unsubscribe();
+    document.getElementById("linear_v").innerHTML=message.linear_velocity;
+    document.getElementById("angular_v").innerHTML=message.angular_velocity;
+
   });
