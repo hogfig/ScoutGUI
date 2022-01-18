@@ -27,6 +27,6 @@ var ros = new ROSLIB.Ros({
   });
 
   Scout_status.subscribe(function(message) {
-    console.log('Received message on ' + Scout_status.name + ': ' + message.data);
-    Scout_status.unsubscribe();
+    document.getElementById("linear_v").innerText(message.linear_velocity);
+    document.getElementById("angular_v").innerText(message.angular_velocity);
   });
