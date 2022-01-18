@@ -34,9 +34,39 @@ var ros = new ROSLIB.Ros({
     document.getElementById("linear_v").innerHTML=message.linear_velocity;
     document.getElementById("angular_v").innerHTML=message.angular_velocity;
     var bat_voltage = float2int(message.battery_voltage);
-    console.log(typeof(message.battery_voltage));
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
-    Scout_status.unsubscribe();
   });
 
+  function Move(){
+    var twist = new ROSLIB.Message({
+        linear : {
+          x : 0.1,
+          y : 0.2,
+          z : 0.3
+        },
+        angular : {
+          x : -0.1,
+          y : -0.2,
+          z : -0.3
+        }
+      });
 
+      cmdVel.publish(twist);
+  }
+
+  function Stop(){
+    var twist = new ROSLIB.Message({
+        linear : {
+          x : 0.0,
+          y : 0.0,
+          z : 0.0
+        },
+        angular : {
+          x : 0.0,
+          y : 0.0,
+          z : 0.0
+        }
+      });
+      
+      cmdVel.publish(twist);
+  }
