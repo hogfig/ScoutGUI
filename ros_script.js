@@ -37,17 +37,17 @@ var ros = new ROSLIB.Ros({
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
   });
 
-  function Move(){
+  function Move(lx,ly,lz,ax,ay,az){
     var twist = new ROSLIB.Message({
         linear : {
-          x : 0.1,
-          y : 0.2,
-          z : 0.3
+          x : lx,
+          y : ly,
+          z : lz
         },
         angular : {
-          x : -0.1,
-          y : -0.2,
-          z : -0.3
+          x : ax,
+          y : ay,
+          z : az
         }
       });
 

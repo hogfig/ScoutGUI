@@ -29,7 +29,12 @@
         </div>
         <div>
             Navigacija
-            <button onclick="Move()">MOVE</button>
+            <button onclick="Move(0.5,0,0,0,0,0)">MOVE_FORWARD</button>
+            <button onclick="Move(0,0.5,0,0,0,0)">MOVE_LEFT</button>
+            <button onclick="Move(0,-0.5,0,0,0,0)">MOVE_RIGHT</button>
+            <button onclick="Move(-0.5,0,0,0,0,0)">MOVE_BACK</button>
+            <button onclick="Move(0,0,0,0,0,0.5)">TWIST_LEFT</button>
+            <button onclick="Move(0,0,0,0,0,-0.5)">TWIST_RIGHT</button>
             <button onclick="Stop()">STOP</button>
         </div>
     </body>
