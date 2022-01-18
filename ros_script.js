@@ -25,8 +25,8 @@ var ros = new ROSLIB.Ros({
     name : '/cmd_vel',
     messageType : 'geometry_msgs/Twist'
   });
-  
+
   Scout_status.subscribe(function(message) {
-    console.log('Received message on ' + listener.name + ': ' + message.data);
+    console.log('Received message on ' + Scout_status.name + ': ' + message.data);
     listener.unsubscribe();
   });
