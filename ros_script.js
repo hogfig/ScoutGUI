@@ -27,8 +27,9 @@ var ros = new ROSLIB.Ros({
   });
 
   Scout_status.subscribe(function(message) {
-      console.log(message);
+    console.log(message);
     document.getElementById("linear_v").innerHTML=message.linear_velocity;
     document.getElementById("angular_v").innerHTML=message.angular_velocity;
+    document.getElementById("battery_voltage").innerHTML=message.battery_voltage + ' [V]';
     Scout_status.unsubscribe();
   });
