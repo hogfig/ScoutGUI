@@ -28,5 +28,5 @@ var ros = new ROSLIB.Ros({
 
   Scout_status.subscribe(function(message) {
     console.log('Received message on ' + Scout_status.name + ': ' + message.data);
-    listener.unsubscribe();
+    Scout_status.unsubscribe();
   });
