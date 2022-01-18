@@ -14,12 +14,18 @@ var ros = new ROSLIB.Ros({
     console.log("Closed");
   });
 
-  var Scout_status = ROSLIB.Topic({
+  var Scout_status = new ROSLIB.Topic({
     ros : ros,
     name : '/scout_status',
     messageType :'scout_msgs/ScoutStatus'
-  })
+  });
 
+  var cmdVel = new ROSLIB.Topic({
+    ros : ros,
+    name : '/cmd_vel',
+    messageType : 'geometry_msgs/Twist'
+  });
+  
   Scout_status.subscribe(function(message) {
     console.log('Received message on ' + listener.name + ': ' + message.data);
     listener.unsubscribe();
