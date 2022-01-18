@@ -14,6 +14,10 @@ var ros = new ROSLIB.Ros({
     console.log("Closed");
   });
 
+  function float2int (value) {
+    return value | 0;
+}
+
   var Scout_status = new ROSLIB.Topic({
     ros : ros,
     name : '/scout_status',
@@ -29,8 +33,10 @@ var ros = new ROSLIB.Ros({
   Scout_status.subscribe(function(message) {
     document.getElementById("linear_v").innerHTML=message.linear_velocity;
     document.getElementById("angular_v").innerHTML=message.angular_velocity;
-    var bat_voltage = Math.round(message.battery_voltage);
+    var bat_voltage = float2int(message.battery_voltage);
     console.log(typeof(message.battery_voltage));
     document.getElementById("battery_voltage").innerHTML= bat_voltage[0] + ' [V]';
     Scout_status.unsubscribe();
   });
+
+
