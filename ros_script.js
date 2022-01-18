@@ -30,6 +30,7 @@ var ros = new ROSLIB.Ros({
     console.log(message);
     document.getElementById("linear_v").innerHTML=message.linear_velocity;
     document.getElementById("angular_v").innerHTML=message.angular_velocity;
-    document.getElementById("battery_voltage").innerHTML=message.battery_voltage + ' [V]';
+    var bat_voltage = message.battery_voltage.split('.');
+    document.getElementById("battery_voltage").innerHTML= bat_voltage[0] + ' [V]';
     Scout_status.unsubscribe();
   });
