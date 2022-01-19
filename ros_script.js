@@ -4,6 +4,7 @@ var ros = new ROSLIB.Ros({
 
   ros.on('connection', function() {
     console.log("Connected");
+    SetCam();
   });
 
   ros.on('error', function(error) {
@@ -37,17 +38,7 @@ var ros = new ROSLIB.Ros({
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
   });
 
-  
-
-  //function: execute when elements on page are loaded
-  window.onload = function() {
-    var Joy = new JoyStick("JoyContainer", {},function(stickData) {
-      let y = (stickData.x/100)*0.7;
-      let x = (stickData.y/100)*0.7;
-
-      Move(x,y,0,0,0,0);
-    });
-
+  function SetCam(){
     console.log('set camera method')
     this.cameraViewer = new MJPEGCANVAS.Viewer({
         divID: 'video_streem',
@@ -57,6 +48,16 @@ var ros = new ROSLIB.Ros({
         topic: '/camera/color/image_raw',
         port: 9000,
     })
+  }
+
+  //function: execute when elements on page are loaded
+  window.onload = function() {
+    var Joy = new JoyStick("JoyContainer", {},function(stickData) {
+      let y = (stickData.x/100)*0.7;
+      let x = (stickData.y/100)*0.7;
+
+      Move(x,y,0,0,0,0);
+    });
 
   }
 
