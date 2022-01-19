@@ -37,6 +37,8 @@ var ros = new ROSLIB.Ros({
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
   });
 
+  
+
   //function: execute when elements on page are loaded
   window.onload = function() {
     var Joy = new JoyStick("JoyContainer", {},function(stickData) {
@@ -45,6 +47,17 @@ var ros = new ROSLIB.Ros({
 
       Move(x,y,0,0,0,0);
     });
+
+    console.log('set camera method')
+    this.cameraViewer = new MJPEGCANVAS.Viewer({
+        divID: 'mjpeg',
+        host: '10.129.141.97',
+        width: 640,
+        height: 480,
+        topic: '/camera/rgb/image_raw',
+        port: 9000,
+    })
+
   }
 
   var leftbtn;
