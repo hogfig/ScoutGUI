@@ -3,39 +3,42 @@
     <head>
         <meta charset="utf-8" />
         <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+        <script src="joy.js"></script>
         <script type="text/javascript" src="ros_script.js" ></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Scout GUI</h1> 
-        <div>
-            <div>Status robota</div>
-            <div>
-                <div>
-                    <span>Linearna brzina:</span>
-                    <span id="linear_v"></span>
-                </div>
-
-                <div>
-                    <span>Kutna brzina:</span>
-                    <span id="angular_v"></span>
-                </div>
-
-                <div>
-                    <span>Status baterije:</span>
-                    <span id="battery_voltage"></span>
-                </div>
-                
+        <div class="Hedder">
+            <div class="HedderImgContainer">
+                <img class="HedderImg" src="img/larics.png" alt="upsy">
             </div>
         </div>
-        <div>
-            Navigacija
-            <button onclick="Move(0.5,0,0,0,0,0)">MOVE_FORWARD</button>
-            <button onclick="Move(0,0.5,0,0,0,0)">MOVE_LEFT</button>
-            <button onclick="Move(0,-0.5,0,0,0,0)">MOVE_RIGHT</button>
-            <button onclick="Move(-0.5,0,0,0,0,0)">MOVE_BACK</button>
-            <button onclick="Move(0,0,0,0,0,0.5)">TWIST_LEFT</button>
-            <button onclick="Move(0,0,0,0,0,-0.5)">TWIST_RIGHT</button>
-            <button onclick="Stop()">STOP</button>
+        
+        <div class="VideoStreeemContainer">
+            <img class="ConstructionImg" src="img/under_construction.png" alt="upsy">
         </div>
+
+        <div class="StatusWindowContainer">
+            <div class="StatusWindowHedding">Status robota</div>
+            <div>
+                <div>
+                    <div class="StatusWindowElement">Status baterije:</div>
+                    <div class="StatusWindowElement" id="battery_voltage"></div>
+                </div>
+
+                <div>
+                    <div class="StatusWindowElement">Linearna brzina:</div>
+                    <div class="StatusWindowElement" id="linear_v"></div>
+                </div>
+
+                <div>
+                    <div class="StatusWindowElement">Kutna brzina:</div>
+                    <div class="StatusWindowElement" id="angular_v"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="container" style="width:200px;height:200px;margin:50px;position:fixed;bottom:30px;left:500px;"></div>
+        
     </body>
 </html>

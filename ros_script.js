@@ -37,6 +37,17 @@ var ros = new ROSLIB.Ros({
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
   });
 
+  //function: execute when elements on page are loaded
+  window.onload = function() {
+    var Joy = new JoyStick("container", {},function(stickData) {
+      let y = stickData.x/100;
+      let x = stickData.y/100;
+
+      Move(x,y,0,0,0,0);
+      console.log("x:"+x+" y:"+y);
+    });
+  }
+
   function Move(lx,ly,lz,ax,ay,az){
     var twist = new ROSLIB.Message({
         linear : {
@@ -51,22 +62,5 @@ var ros = new ROSLIB.Ros({
         }
       });
 
-      cmdVel.publish(twist);
-  }
-
-  function Stop(){
-    var twist = new ROSLIB.Message({
-        linear : {
-          x : 0.0,
-          y : 0.0,
-          z : 0.0
-        },
-        angular : {
-          x : 0.0,
-          y : 0.0,
-          z : 0.0
-        }
-      });
-      
       cmdVel.publish(twist);
   }
