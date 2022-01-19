@@ -50,11 +50,11 @@ var ros = new ROSLIB.Ros({
 
     console.log('set camera method')
     this.cameraViewer = new MJPEGCANVAS.Viewer({
-        divID: 'mjpeg',
+        divID: 'video_streem',
         host: '10.129.141.97',
         width: 640,
         height: 480,
-        topic: '/camera/rgb/image_raw',
+        topic: '/camera/color/image_raw',
         port: 9000,
     })
 
