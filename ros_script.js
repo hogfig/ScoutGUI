@@ -37,6 +37,7 @@ var ros = new ROSLIB.Ros({
   });
 
   listener.subscribe(function(message) {
+    console.log(message);
     console.log('Received message on ' + listener.name + ': ' + message.data);
     value1=message.data;
   });
