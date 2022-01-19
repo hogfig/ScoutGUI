@@ -70,7 +70,7 @@ var ros = new ROSLIB.Ros({
   }
 
   function Move(lx,ly,lz,ax,ay,az){
-    console.log(lx+" "+ly+" "+lz+" "+ax+" "+ay+" "+az);
+   // console.log(lx+" "+ly+" "+lz+" "+ax+" "+ay+" "+az);
     var twist = new ROSLIB.Message({
         linear : {
           x : lx,
