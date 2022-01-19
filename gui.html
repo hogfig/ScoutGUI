@@ -23,22 +23,25 @@
             <div>
                 <div>
                     <div class="StatusWindowElement">Status baterije:</div>
-                    <div class="StatusWindowElement" id="battery_voltage"></div>
+                    <div class="StatusWindowElement" id="battery_voltage">ss</div>
                 </div>
 
                 <div>
                     <div class="StatusWindowElement">Linearna brzina:</div>
-                    <div class="StatusWindowElement" id="linear_v"></div>
+                    <div class="StatusWindowElement" id="linear_v">ssa</div>
                 </div>
 
                 <div>
                     <div class="StatusWindowElement">Kutna brzina:</div>
-                    <div class="StatusWindowElement" id="angular_v"></div>
+                    <div class="StatusWindowElement" id="angular_v">das</div>
                 </div>
             </div>
         </div>
 
-        <div id="container" style="width:200px;height:200px;margin:50px;position:fixed;bottom:30px;left:500px;"></div>
-        
+        <!--- NAVIGATION -->
+        <div id="JoyContainer" class="JoyContainer" ></div>
+        <button id="Leftbtn" class="Leftbtn" onmousedown="StartLeft()" onmouseup="EndLeft()">Rotate left</button>
+        <button id="Rightbtn" class="Rightbtn" onmousedown="StartRight()" onmouseup="EndRight()">Rotate right</button>
+
     </body>
 </html>

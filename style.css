@@ -1,5 +1,7 @@
 body{
     margin:0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-color: #5b6467; 
     background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
 }
@@ -36,17 +38,17 @@ body{
 .ConstructionImg{
     display: block;
     margin-left: auto;
-    margin-right: auto;
-    
+    margin-right: auto;  
 }
 
 .StatusWindowContainer{
     font-family: sans-serif;
+    overflow:auto;
     position: relative;
     border-style: groove;
     border-color: darkgray;
     height: 110px;
-    width: 150px;
+    width: 200px;
 }
 
 .StatusWindowHedding{
@@ -60,5 +62,31 @@ body{
 }
 
 .StatusWindowElement{
+    display: inline-block;
     padding: 2px;
+}
+
+.JoyContainer{
+    width:200px;
+    height:200px;
+    margin:50px;
+    position:fixed;
+    bottom:30px;
+    left:500px;
+}
+.Leftbtn{
+    width:100px;
+    height:30px;
+    margin:50px;
+    position:fixed;
+    bottom:0px;
+    left:450px;
+}
+.Rightbtn{
+    width:100px;
+    height:30px;
+    margin:50px;
+    position:fixed;
+    bottom:0px;
+    left:650px;
 }

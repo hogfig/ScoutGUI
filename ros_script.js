@@ -31,6 +31,7 @@ var ros = new ROSLIB.Ros({
   });
 
   Scout_status.subscribe(function(message) {
+    console.log(typeof(message.linear_velocity));
     document.getElementById("linear_v").innerHTML=message.linear_velocity;
     document.getElementById("angular_v").innerHTML=message.angular_velocity;
     var bat_voltage = float2int(message.battery_voltage);
@@ -39,16 +40,37 @@ var ros = new ROSLIB.Ros({
 
   //function: execute when elements on page are loaded
   window.onload = function() {
-    var Joy = new JoyStick("container", {},function(stickData) {
+    var Joy = new JoyStick("JoyContainer", {},function(stickData) {
       let y = stickData.x/100;
       let x = stickData.y/100;
 
       Move(x,y,0,0,0,0);
-      console.log("x:"+x+" y:"+y);
     });
   }
 
+  var leftbtn;
+  var rightbtn;
+
+  function StartLeft(){
+    leftbtn=setInterval(function() {
+      Move(0,0,0,0,0,0.25);
+    }, 100);
+  }
+  function EndLeft(){
+    clearInterval(leftbtn);
+  }
+
+  function StartRight(){
+    rightbtn=setInterval(function() {
+      Move(0,0,0,0,0,-0.25);
+    }, 100);
+  }
+  function EndRight(){
+    clearInterval(rightbtn);
+  }
+
   function Move(lx,ly,lz,ax,ay,az){
+    //console.log(lx+" "+ly+" "+lz+" "+ax+" "+ay+" "+az);
     var twist = new ROSLIB.Message({
         linear : {
           x : lx,
