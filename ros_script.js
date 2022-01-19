@@ -30,16 +30,19 @@ var ros = new ROSLIB.Ros({
     messageType : 'geometry_msgs/Twist'
   });
 
-  Scout_status.subscribe(function(message) {
-    console.log(message);
-    document.getElementById("linear_v").innerHTML=message.linear_velocity.toFixed(2);
-    document.getElementById("angular_v").innerHTML=message.angular_velocity.toFixed(2);
-    var bat_voltage = float2int(message.battery_voltage);
-    document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
-  });
+  
 
   //function: execute when elements on page are loaded
   window.onload = function() {
+    
+    Scout_status.subscribe(function(message) {
+      console.log(message);
+      document.getElementById("linear_v").innerHTML=message.linear_velocity.toFixed(2);
+      document.getElementById("angular_v").innerHTML=message.angular_velocity.toFixed(2);
+      var bat_voltage = float2int(message.battery_voltage);
+      document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
+    });
+
     var Joy = new JoyStick("JoyContainer", {},function(stickData) {
       let y = stickData.x/100;
       let x = stickData.y/100;
