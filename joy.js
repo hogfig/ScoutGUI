@@ -113,6 +113,7 @@ var JoyStick = (function(container, parameters, callback)
     // Used to save current position of stick
     var movedX=centerX;
     var movedY=centerY;
+    var ros_data;
 
     // Check if the device support the touch or not
     if("ontouchstart" in document.documentElement)
@@ -126,7 +127,6 @@ var JoyStick = (function(container, parameters, callback)
         canvas.addEventListener("mousedown", onMouseDown, false);
         document.addEventListener("mousemove", onMouseMove, false);
         document.addEventListener("mouseup", onMouseUp, false);
-        setInterval(return_data, 100);
     }
     // Draw the object
     drawExternal();
@@ -242,6 +242,7 @@ var JoyStick = (function(container, parameters, callback)
      */
     function onMouseDown(event) 
     {
+        ros_data=setInterval(return_data, 100);
         pressed = 1;
     }
 
@@ -282,6 +283,7 @@ var JoyStick = (function(container, parameters, callback)
 
     function onMouseUp(event) 
     {
+        clearInterval(ros_data);
         pressed = 0;
         // If required reset position store variable
         if(autoReturnToCenter)

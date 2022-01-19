@@ -31,9 +31,8 @@ var ros = new ROSLIB.Ros({
   });
 
   Scout_status.subscribe(function(message) {
-    console.log(typeof(message.linear_velocity));
-    document.getElementById("linear_v").innerHTML=message.linear_velocity;
-    document.getElementById("angular_v").innerHTML=message.angular_velocity;
+    document.getElementById("linear_v").innerHTML=message.linear_velocity.toFixed(2);
+    document.getElementById("angular_v").innerHTML=message.angular_velocity.toFixed(2);
     var bat_voltage = float2int(message.battery_voltage);
     document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
   });
