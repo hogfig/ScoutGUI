@@ -44,7 +44,7 @@ var ros = new ROSLIB.Ros({
         divID: 'video_streem',
         host: '10.129.141.97',
         width: 640,
-        height: 480,
+        height: 360,
         topic: '/camera/color/image_raw',
         port: 9000,
     })
