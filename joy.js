@@ -177,13 +177,11 @@ var JoyStick = (function(container, parameters, callback)
      */
     function onTouchStart(event) 
     {
-        console.log("onTouchStart");
         pressed = 1;
     }
 
     function onTouchMove(event)
     {
-        console.log("onTouchMove");
         if(pressed === 1 && event.targetTouches[0].target === canvas)
         {   
             movedX = event.targetTouches[0].pageX;
@@ -217,7 +215,6 @@ var JoyStick = (function(container, parameters, callback)
 
     function onTouchEnd(event) 
     {
-        console.log("onTouchEnd");
         pressed = 0;
         // If required reset position store variable
         if(autoReturnToCenter)
@@ -245,7 +242,6 @@ var JoyStick = (function(container, parameters, callback)
      */
     function onMouseDown(event) 
     {
-        console.log("onMouseDown");
         pressed = 1;
     }
 
