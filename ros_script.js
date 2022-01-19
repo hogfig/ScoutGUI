@@ -52,7 +52,7 @@ var ros = new ROSLIB.Ros({
 
   function StartLeft(){
     leftbtn=setInterval(function() {
-      Move(0,0,0,0,0,0.25);
+      Move(0,0,0,0,0,0.5);
     }, 100);
   }
   function EndLeft(){
@@ -61,7 +61,7 @@ var ros = new ROSLIB.Ros({
 
   function StartRight(){
     rightbtn=setInterval(function() {
-      Move(0,0,0,0,0,-0.25);
+      Move(0,0,0,0,0,-0.5);
     }, 100);
   }
   function EndRight(){
