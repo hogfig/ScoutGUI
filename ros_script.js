@@ -23,7 +23,7 @@ var ros = new ROSLIB.Ros({
     name : '/scout_status',
     messageType :'scout_msgs/ScoutStatus'
   });
-
+  console.log(Scout_status);
   var cmdVel = new ROSLIB.Topic({
     ros : ros,
     name : '/cmd_vel',
@@ -70,7 +70,7 @@ var ros = new ROSLIB.Ros({
   }
 
   function Move(lx,ly,lz,ax,ay,az){
-   // console.log(lx+" "+ly+" "+lz+" "+ax+" "+ay+" "+az);
+    console.log(lx+" "+ly+" "+lz+" "+ax+" "+ay+" "+az);
     var twist = new ROSLIB.Message({
         linear : {
           x : lx,
