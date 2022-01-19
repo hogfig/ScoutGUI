@@ -53,8 +53,8 @@ var ros = new ROSLIB.Ros({
   //function: execute when elements on page are loaded
   window.onload = function() {
     var Joy = new JoyStick("JoyContainer", {},function(stickData) {
-      let y = (stickData.x/100)*0.7;
-      let x = (stickData.y/100)*0.7;
+      let x = (stickData.x/100)*0.7;
+      let y = (stickData.y/100)*0.7;
 
       Move(x,y,0,0,0,0);
     });
