@@ -23,29 +23,27 @@ var ros = new ROSLIB.Ros({
     name : '/scout_status',
     messageType :'scout_msgs/ScoutStatus'
   });
-  console.log(Scout_status);
+
   var cmdVel = new ROSLIB.Topic({
     ros : ros,
     name : '/cmd_vel',
     messageType : 'geometry_msgs/Twist'
   });
-
   
+  Scout_status.subscribe(function(message) {
+    console.log(message);
+    document.getElementById("linear_v").innerHTML=message.linear_velocity;//.toFixed(2);
+    document.getElementById("angular_v").innerHTML=message.angular_velocity;//.toFixed(2);
+    var bat_voltage = float2int(message.battery_voltage);
+    document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
+  });
 
   //function: execute when elements on page are loaded
   window.onload = function() {
-    
-    Scout_status.subscribe(function(message) {
-      console.log(message);
-      document.getElementById("linear_v").innerHTML=message.linear_velocity.toFixed(2);
-      document.getElementById("angular_v").innerHTML=message.angular_velocity.toFixed(2);
-      var bat_voltage = float2int(message.battery_voltage);
-      document.getElementById("battery_voltage").innerHTML= bat_voltage + ' [V]';
-    });
 
     var Joy = new JoyStick("JoyContainer", {},function(stickData) {
-      let y = stickData.x/100;
-      let x = stickData.y/100;
+      let y = (stickData.x/100)*0.7;
+      let x = (stickData.y/100)*0.7;
 
       Move(x,y,0,0,0,0);
     });
